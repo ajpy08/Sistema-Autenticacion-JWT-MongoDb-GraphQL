@@ -5,6 +5,7 @@ import schema from "./schema";
 import { ApolloServer } from "apollo-server-express";
 import { createServer } from "http";
 import environments from "./config/environments";
+import Database from "./config/database";
 
 if (process.env.NODE_ENV !== "production") {
   const envs = environments;
@@ -18,8 +19,16 @@ async function init() {
 
   app.use(compression());
 
+  const database = new Database();
+  const db = await database.init();
+
+  const context: any = async ({ req, connection }: any) => {
+    return { db };
+  };
+
   const server = new ApolloServer({
     schema,
+    context, //si se llamara la variable distinta a context se tendría que poner context: contexto
     introspection: true
   });
 
