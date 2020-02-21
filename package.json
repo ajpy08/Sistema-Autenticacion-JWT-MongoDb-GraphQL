@@ -29,6 +29,7 @@
     "graphql-tools": "^4.0.5",
     "http": "0.0.0",
     "ncp": "^2.0.0",
+    "ts-node": "^8.6.2",
     "typescript": "^3.5.2"
   },
   "devDependencies": {
