@@ -3,7 +3,7 @@
     users: [User!]!
 
     "Iniciamos sesión en el sistema"
-    login(email: String!, password: String!): User!
+    login(email: String!, password: String!): ResultUser!
 
     "Obtener nuestra informacion con el token"
     me: User!
@@ -31,7 +31,7 @@ input UserInput {
 }
 
 type ResultUser {
-    estatus: Boolean!
+    status: Boolean!
     message: String!
     user: User
 }
