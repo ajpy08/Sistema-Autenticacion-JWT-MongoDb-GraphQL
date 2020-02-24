@@ -27,6 +27,8 @@ const query: IResolvers = {
         };
       }
 
+      delete user.password;
+      //   user.password = "=)";
       return {
         status: true,
         message: "Login Correcto",
