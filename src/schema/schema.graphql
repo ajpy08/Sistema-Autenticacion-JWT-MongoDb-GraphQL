@@ -11,7 +11,7 @@
 
 type Mutation {
     "Registro de los usuarios en el sistema"
-    register(user: UserInput) : User!
+    register(user: UserInput) : ResultUser!
 }
 
 type User {
@@ -28,4 +28,10 @@ input UserInput {
     lastname: String!
     email: String!
     password: String!
+}
+
+type ResultUser {
+    estatus: Boolean!
+    message: String!
+    user: User
 }
