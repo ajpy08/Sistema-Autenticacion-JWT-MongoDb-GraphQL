@@ -1,5 +1,6 @@
 import { IResolvers } from "graphql-tools";
 import JWT from "../lib/jwt";
+import bcryptjs from 'bcryptjs';
 
 const query: IResolvers = {
   Query: {
@@ -19,7 +20,7 @@ const query: IResolvers = {
         };
       }
 
-      if (password !== user.password) {
+      if (!bcryptjs.compare(password, user.password)) {
         return {
           status: false,
           message: "Login INCORRECTO. Contraseña incorrecta",
