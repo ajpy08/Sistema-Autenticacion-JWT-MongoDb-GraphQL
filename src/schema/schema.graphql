@@ -6,7 +6,7 @@
     login(email: String!, password: String!): ResultToken!
 
     "Obtener nuestra informacion con el token"
-    me: User!
+    me: ResultUser!
 }
 
 type Mutation {

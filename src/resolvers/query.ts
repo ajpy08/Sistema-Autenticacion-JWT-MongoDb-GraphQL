@@ -35,6 +35,21 @@ const query: IResolvers = {
         message: "Login Correcto",
         token: new JWT().sign({ user })
       };
+    },
+    me(_: void, __: any, { token }){
+        let info: any = new JWT().verify(token);
+        if (info === 'La autenticación del token es inválida. Por favor, inicia sesión para obtener un nuevo token.') {
+            return {
+                status: false,
+                message: info,
+                user: null
+            }
+        }
+        return {
+            status: true,
+            message: 'Token Correcto',
+            user: info.user
+        }
     }
   }
 };
